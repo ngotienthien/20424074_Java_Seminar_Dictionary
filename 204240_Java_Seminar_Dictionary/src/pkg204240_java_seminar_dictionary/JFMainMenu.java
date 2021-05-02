@@ -8,18 +8,23 @@ package pkg204240_java_seminar_dictionary;
 import java.awt.Dimension;
 import java.awt.List;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Box;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JPanel;
 
 /**
@@ -31,7 +36,8 @@ public class JFMainMenu extends javax.swing.JFrame {
     /**
      * Creates new form JFMainMenu
      */
-    final String fileName = "slang.txt";
+    final String FILENAMEOFSLANG = "slang.txt";
+    final String ORIGINALFILENAMEOFSLANG = "originalSlang.txt";
     private TreeMap<String, String> DictionarySlangWord = new TreeMap();
     ArrayList<String> History = new ArrayList();
     JPSearchSlangWord JPSearch = new JPSearchSlangWord(DictionarySlangWord);
@@ -44,6 +50,8 @@ public class JFMainMenu extends javax.swing.JFrame {
             Logger.getLogger(JFMainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
         initComponents();
+
+
     }
 
     /**
@@ -260,9 +268,21 @@ public class JFMainMenu extends javax.swing.JFrame {
 
     private void jBResetSlangWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBResetSlangWordActionPerformed
         // TODO add your handling code here:
-        clearContenPanel();
-
-        addPanelToContentPanel(new JPResetDictionary(DictionarySlangWord));
+        int n = JOptionPane.showConfirmDialog(
+                    null,
+                    "Bạn có chắc là muốn reset không?",
+                    "Message",
+                    JOptionPane.YES_NO_OPTION);
+            
+        if(n == 1){
+            return;
+        }
+        
+        try {
+            resetDictionary();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(JFMainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBResetSlangWordActionPerformed
 
     private void jBRandomSlangWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRandomSlangWordActionPerformed
@@ -286,6 +306,11 @@ public class JFMainMenu extends javax.swing.JFrame {
         addPanelToContentPanel(new JPPuzzleDefenition(DictionarySlangWord));
     }//GEN-LAST:event_jBPuzzleDefenitionActionPerformed
 
+    private void resetDictionary() throws FileNotFoundException{
+        ReadFileToTreeMap(ORIGINALFILENAMEOFSLANG);
+        updateFileDictionary();
+        showMessageDialog(null, "Reset thành công");
+    }
     
     private void addPanelToContentPanel(JPanel panel){        
         panel.setBounds(0, 0, 750, 700);
@@ -300,11 +325,16 @@ public class JFMainMenu extends javax.swing.JFrame {
     }
     
     private void LoadData() throws FileNotFoundException, IOException{
-
+        ReadFileToTreeMap(FILENAMEOFSLANG);
+//        System.out.println(ReadFileToTreeMap(fileNameOfSlang));
+    }
+    
+    private void ReadFileToTreeMap(String fileName) throws FileNotFoundException{
+        
         // Đọc dữ liệu từ File với File và FileReader
         File file = new File(fileName);
         BufferedReader reader = new BufferedReader(new FileReader(file));
-
+        
         try {
             String line = reader.readLine();
 
@@ -316,7 +346,8 @@ public class JFMainMenu extends javax.swing.JFrame {
                 
                 line = reader.readLine();
             }
-            System.out.println(DictionarySlangWord);
+            
+            
         } catch (FileNotFoundException ex) {
             System.out.println(ex.toString());
         } catch (IOException ex) {
@@ -325,8 +356,43 @@ public class JFMainMenu extends javax.swing.JFrame {
             try {
                 reader.close();
                 // file.close();
+                
             } catch (IOException ex) {
                 System.out.println(ex.toString());
+            }
+            
+        }
+    }
+    
+    private void updateFileDictionary(){
+        BufferedWriter bw = null;
+        FileWriter fw = null;
+        
+        try {
+            File file = new File(FILENAMEOFSLANG);
+            // if file doesnt exists, then create it
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            // true = append file
+            fw = new FileWriter(file.getAbsoluteFile());
+            bw = new BufferedWriter(fw);
+            
+            Set<String> keySet = DictionarySlangWord.keySet();
+            
+            for (String key : keySet) {
+                bw.write(key + "`" + DictionarySlangWord.get(key) + "\n");
+            }     
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (bw != null)
+                    bw.close();
+                if (fw != null)
+                    fw.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
         }
     }

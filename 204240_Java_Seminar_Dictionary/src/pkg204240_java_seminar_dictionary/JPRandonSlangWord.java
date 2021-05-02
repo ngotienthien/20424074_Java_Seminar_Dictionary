@@ -5,6 +5,9 @@
  */
 package pkg204240_java_seminar_dictionary;
 
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.TreeMap;
 import javax.swing.JLabel;
 
@@ -23,6 +26,7 @@ public class JPRandonSlangWord extends javax.swing.JPanel {
     public JPRandonSlangWord(TreeMap _DictionarySlangWord) {
         DictionarySlangWord = _DictionarySlangWord;
         initComponents();
+        loadRandomSlangWord();
     }
 
     /**
@@ -35,11 +39,11 @@ public class JPRandonSlangWord extends javax.swing.JPanel {
     private void initComponents() {
 
         jLTitle = new javax.swing.JLabel();
-        jTSearch = new javax.swing.JTextField();
         jPResult = new javax.swing.JPanel();
-        jLResult = new javax.swing.JLabel();
         jLSlangWord = new javax.swing.JLabel();
-        jBSearch = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTxtWord = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setPreferredSize(new java.awt.Dimension(700, 500));
@@ -47,38 +51,46 @@ public class JPRandonSlangWord extends javax.swing.JPanel {
         jLTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLTitle.setText("Random slang word");
 
-        jTSearch.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTSearch.setToolTipText("");
-
-        jLResult.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
         jLSlangWord.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLSlangWord.setText("Slang word of  ");
+        jLSlangWord.setText("Word on this Day");
+
+        jTxtWord.setColumns(20);
+        jTxtWord.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        jTxtWord.setRows(5);
+        jScrollPane1.setViewportView(jTxtWord);
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setText("Ramdom");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPResultLayout = new javax.swing.GroupLayout(jPResult);
         jPResult.setLayout(jPResultLayout);
         jPResultLayout.setHorizontalGroup(
             jPResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPResultLayout.createSequentialGroup()
-                .addComponent(jLSlangWord, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 309, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(jPResultLayout.createSequentialGroup()
+                        .addComponent(jLSlangWord, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addContainerGap(303, Short.MAX_VALUE))))
         );
         jPResultLayout.setVerticalGroup(
             jPResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPResultLayout.createSequentialGroup()
-                .addComponent(jLSlangWord, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addGroup(jPResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLSlangWord, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLResult, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
         );
-
-        jBSearch.setText("Tìm kiếm");
-        jBSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBSearchActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -88,12 +100,7 @@ public class JPRandonSlangWord extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jPResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(242, 242, 242)
                         .addComponent(jLTitle)))
@@ -103,11 +110,7 @@ public class JPRandonSlangWord extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLTitle)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jBSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
-                .addGap(41, 41, 41)
+                .addGap(97, 97, 97)
                 .addComponent(jPResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -115,20 +118,26 @@ public class JPRandonSlangWord extends javax.swing.JPanel {
         jLTitle.getAccessibleContext().setAccessibleName("Random slang word mỗi ngày");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSearchActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String jTxtSearch = jTSearch.getText();
-        jLSlangWord.setText("Defenition : " + jTxtSearch);
-        jLResult.setText(DictionarySlangWord.get(jTxtSearch));
-    }//GEN-LAST:event_jBSearchActionPerformed
+        loadRandomSlangWord();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void loadRandomSlangWord(){
+        Random       random    = new Random();
+        ArrayList<String> keys      = new ArrayList<String>(DictionarySlangWord.keySet());
+        String       randomKey = keys.get( random.nextInt(keys.size()) );
+        String       value     = DictionarySlangWord.get(randomKey);
+        String SlangRandom = randomKey + "  |  " + value;
+        jTxtWord.setText(SlangRandom);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBSearch;
-    private javax.swing.JLabel jLResult;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLSlangWord;
     private javax.swing.JLabel jLTitle;
     private javax.swing.JPanel jPResult;
-    private javax.swing.JTextField jTSearch;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTxtWord;
     // End of variables declaration//GEN-END:variables
 }
