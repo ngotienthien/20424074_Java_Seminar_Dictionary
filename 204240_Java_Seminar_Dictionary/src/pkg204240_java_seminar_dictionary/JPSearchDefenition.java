@@ -56,6 +56,7 @@ public class JPSearchDefenition extends javax.swing.JPanel {
         jLSlangWord.setText("Slang word of  ");
 
         jTAResult.setColumns(20);
+        jTAResult.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
         jTAResult.setRows(5);
         jSPResult.setViewportView(jTAResult);
 

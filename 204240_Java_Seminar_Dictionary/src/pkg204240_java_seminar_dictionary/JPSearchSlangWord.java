@@ -5,6 +5,9 @@
  */
 package pkg204240_java_seminar_dictionary;
 
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.TreeMap;
 import javax.swing.JLabel;
 
@@ -19,6 +22,8 @@ public class JPSearchSlangWord extends javax.swing.JPanel {
      */
     
     private TreeMap<String, String> DictionarySlangWord = new TreeMap<>();
+
+    public ArrayList<String> History = new ArrayList();
     
     public JPSearchSlangWord(TreeMap _DictionarySlangWord) {
         DictionarySlangWord = _DictionarySlangWord;
@@ -114,8 +119,10 @@ public class JPSearchSlangWord extends javax.swing.JPanel {
 
     private void jBSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSearchActionPerformed
         // TODO add your handling code here:
+        Date currentTime = new Date();
         String jTxtSearch = jTSearchSlangWord.getText();
         jLResult.setText(jTxtSearch + " : " + DictionarySlangWord.get(jTxtSearch));
+        History.add(jTxtSearch + " ---- " + currentTime);
     }//GEN-LAST:event_jBSearchActionPerformed
 
 

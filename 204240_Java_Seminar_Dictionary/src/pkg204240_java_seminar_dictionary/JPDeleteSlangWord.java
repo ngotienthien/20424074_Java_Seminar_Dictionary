@@ -5,8 +5,14 @@
  */
 package pkg204240_java_seminar_dictionary;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Set;
 import java.util.TreeMap;
 import javax.swing.JLabel;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -19,6 +25,7 @@ public class JPDeleteSlangWord extends javax.swing.JPanel {
      */
     
     private TreeMap<String, String> DictionarySlangWord = new TreeMap<>();
+    private static final String FILENAME = "slang.txt";
     
     public JPDeleteSlangWord(TreeMap _DictionarySlangWord) {
         DictionarySlangWord = _DictionarySlangWord;
@@ -36,10 +43,8 @@ public class JPDeleteSlangWord extends javax.swing.JPanel {
 
         jLTitle = new javax.swing.JLabel();
         jTSearch = new javax.swing.JTextField();
-        jPResult = new javax.swing.JPanel();
-        jLResult = new javax.swing.JLabel();
-        jLSlangWord = new javax.swing.JLabel();
-        jBSearch = new javax.swing.JButton();
+        jBDelete = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setPreferredSize(new java.awt.Dimension(700, 500));
@@ -50,35 +55,15 @@ public class JPDeleteSlangWord extends javax.swing.JPanel {
         jTSearch.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTSearch.setToolTipText("");
 
-        jLResult.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        jLSlangWord.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLSlangWord.setText("Slang word of  ");
-
-        javax.swing.GroupLayout jPResultLayout = new javax.swing.GroupLayout(jPResult);
-        jPResult.setLayout(jPResultLayout);
-        jPResultLayout.setHorizontalGroup(
-            jPResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPResultLayout.createSequentialGroup()
-                .addComponent(jLSlangWord, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 309, Short.MAX_VALUE))
-        );
-        jPResultLayout.setVerticalGroup(
-            jPResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPResultLayout.createSequentialGroup()
-                .addComponent(jLSlangWord, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLResult, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(280, Short.MAX_VALUE))
-        );
-
-        jBSearch.setText("Tìm kiếm");
-        jBSearch.addActionListener(new java.awt.event.ActionListener() {
+        jBDelete.setText("Xóa");
+        jBDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBSearchActionPerformed(evt);
+                jBDeleteActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Slang word");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -87,46 +72,82 @@ public class JPDeleteSlangWord extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(263, 263, 263)
-                        .addComponent(jLTitle)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLTitle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel1)
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jBDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLTitle)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLTitle)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jBSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
-                .addGap(41, 41, 41)
-                .addComponent(jPResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jBDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(366, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSearchActionPerformed
+    private void jBDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeleteActionPerformed
         // TODO add your handling code here:
         String jTxtSearch = jTSearch.getText();
-        jLSlangWord.setText("Defenition : " + jTxtSearch);
-        jLResult.setText(DictionarySlangWord.get(jTxtSearch));
-    }//GEN-LAST:event_jBSearchActionPerformed
+        if(!DictionarySlangWord.containsKey(jTxtSearch)){
+            showMessageDialog(null, "Slang word không tồn tại");
+            return;
+        }
+        
+        DictionarySlangWord.remove(jTxtSearch);
+        updateFileDictionary();
+    }//GEN-LAST:event_jBDeleteActionPerformed
 
+    private void updateFileDictionary(){
+        BufferedWriter bw = null;
+        FileWriter fw = null;
+        
+        try {
+            File file = new File(FILENAME);
+            // if file doesnt exists, then create it
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            // true = append file
+            fw = new FileWriter(file.getAbsoluteFile());
+            bw = new BufferedWriter(fw);
+            
+            Set<String> keySet = DictionarySlangWord.keySet();
+            
+            for (String key : keySet) {
+                bw.write(key + "`" + DictionarySlangWord.get(key) + "\n");
+            }     
+            showMessageDialog(null, "Xóa thành công");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (bw != null)
+                    bw.close();
+                if (fw != null)
+                    fw.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBSearch;
-    private javax.swing.JLabel jLResult;
-    private javax.swing.JLabel jLSlangWord;
+    private javax.swing.JButton jBDelete;
     private javax.swing.JLabel jLTitle;
-    private javax.swing.JPanel jPResult;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTSearch;
     // End of variables declaration//GEN-END:variables
 }

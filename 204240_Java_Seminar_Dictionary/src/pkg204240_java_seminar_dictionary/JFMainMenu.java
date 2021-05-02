@@ -6,6 +6,7 @@
 package pkg204240_java_seminar_dictionary;
 
 import java.awt.Dimension;
+import java.awt.List;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
@@ -13,6 +14,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +33,9 @@ public class JFMainMenu extends javax.swing.JFrame {
      */
     final String fileName = "slang.txt";
     private TreeMap<String, String> DictionarySlangWord = new TreeMap();
+    ArrayList<String> History = new ArrayList();
+    JPSearchSlangWord JPSearch = new JPSearchSlangWord(DictionarySlangWord);
+    
     
     public JFMainMenu() {
         try {
@@ -213,8 +218,7 @@ public class JFMainMenu extends javax.swing.JFrame {
 
     private void jBSearchSlangWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSearchSlangWordActionPerformed
         // TODO add your handling code here:
-        clearContenPanel();
-        JPSearchSlangWord JPSearch = new JPSearchSlangWord(DictionarySlangWord);
+        clearContenPanel();        
         addPanelToContentPanel(JPSearch);
     }//GEN-LAST:event_jBSearchSlangWordActionPerformed
 
@@ -227,9 +231,10 @@ public class JFMainMenu extends javax.swing.JFrame {
 
     private void jBShowHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBShowHistoryActionPerformed
         // TODO add your handling code here:
+        
+        History = JPSearch.History;
         clearContenPanel();
-
-        addPanelToContentPanel(new JPShowHistory(DictionarySlangWord));
+        addPanelToContentPanel(new JPShowHistory(History));
     }//GEN-LAST:event_jBShowHistoryActionPerformed
 
     private void jBAddSlangWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddSlangWordActionPerformed
