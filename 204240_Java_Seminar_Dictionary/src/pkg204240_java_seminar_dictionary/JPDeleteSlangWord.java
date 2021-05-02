@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.Set;
 import java.util.TreeMap;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
@@ -99,10 +100,20 @@ public class JPDeleteSlangWord extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeleteActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:   
         String jTxtSearch = jTSearch.getText();
         if(!DictionarySlangWord.containsKey(jTxtSearch)){
             showMessageDialog(null, "Slang word không tồn tại");
+            return;
+        }
+        
+        int n = JOptionPane.showConfirmDialog(
+                    null,
+                    "Bạn có chắc là muốn xóa không",
+                    "Message",
+                    JOptionPane.YES_NO_OPTION);
+            
+        if(n == 1){
             return;
         }
         
