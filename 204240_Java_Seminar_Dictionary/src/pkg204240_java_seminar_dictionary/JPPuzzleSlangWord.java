@@ -5,8 +5,17 @@
  */
 package pkg204240_java_seminar_dictionary;
 
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 import java.util.TreeMap;
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultButtonModel;
 import javax.swing.JLabel;
+import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JRadioButton;
 
 /**
  *
@@ -19,10 +28,13 @@ public class JPPuzzleSlangWord extends javax.swing.JPanel {
      */
     
     private TreeMap<String, String> DictionarySlangWord = new TreeMap<>();
+    String answerKey = "";
     
     public JPPuzzleSlangWord(TreeMap _DictionarySlangWord) {
         DictionarySlangWord = _DictionarySlangWord;
         initComponents();
+        
+        loadData();
     }
 
     /**
@@ -34,12 +46,15 @@ public class JPPuzzleSlangWord extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupAnswer = new javax.swing.ButtonGroup();
         jLTitle = new javax.swing.JLabel();
-        jTSearch = new javax.swing.JTextField();
         jPResult = new javax.swing.JPanel();
-        jLResult = new javax.swing.JLabel();
-        jLSlangWord = new javax.swing.JLabel();
-        jBSearch = new javax.swing.JButton();
+        jLQuestion = new javax.swing.JLabel();
+        jBtnAnswer = new javax.swing.JButton();
+        jRadioButtonB = new javax.swing.JRadioButton();
+        jRadioButttonA = new javax.swing.JRadioButton();
+        jRadioButtonC = new javax.swing.JRadioButton();
+        jRadioButtonD = new javax.swing.JRadioButton();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setPreferredSize(new java.awt.Dimension(700, 500));
@@ -47,38 +62,65 @@ public class JPPuzzleSlangWord extends javax.swing.JPanel {
         jLTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLTitle.setText("Đố vui slang word");
 
-        jTSearch.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTSearch.setToolTipText("");
+        jLQuestion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLQuestion.setText("Chọn nghĩa của từ: ");
 
-        jLResult.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jBtnAnswer.setText("Answer");
+        jBtnAnswer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnAnswerActionPerformed(evt);
+            }
+        });
 
-        jLSlangWord.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLSlangWord.setText("Slang word of  ");
+        buttonGroupAnswer.add(jRadioButtonB);
+        jRadioButtonB.setText("B");
+
+        buttonGroupAnswer.add(jRadioButttonA);
+        jRadioButttonA.setText("A");
+
+        buttonGroupAnswer.add(jRadioButtonC);
+        jRadioButtonC.setText("C");
+
+        buttonGroupAnswer.add(jRadioButtonD);
+        jRadioButtonD.setText("D");
 
         javax.swing.GroupLayout jPResultLayout = new javax.swing.GroupLayout(jPResult);
         jPResult.setLayout(jPResultLayout);
         jPResultLayout.setHorizontalGroup(
             jPResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPResultLayout.createSequentialGroup()
-                .addComponent(jLSlangWord, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 309, Short.MAX_VALUE))
+                .addGroup(jPResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPResultLayout.createSequentialGroup()
+                        .addGap(247, 247, 247)
+                        .addComponent(jBtnAnswer)
+                        .addGap(0, 338, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPResultLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jPResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRadioButtonD)
+                    .addComponent(jRadioButtonC)
+                    .addComponent(jRadioButttonA)
+                    .addComponent(jRadioButtonB))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPResultLayout.setVerticalGroup(
             jPResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPResultLayout.createSequentialGroup()
-                .addComponent(jLSlangWord, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLResult, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addComponent(jLQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jRadioButttonA)
+                .addGap(18, 18, 18)
+                .addComponent(jRadioButtonB)
+                .addGap(18, 18, 18)
+                .addComponent(jRadioButtonC)
+                .addGap(18, 18, 18)
+                .addComponent(jRadioButtonD)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(jBtnAnswer)
+                .addGap(181, 181, 181))
         );
-
-        jBSearch.setText("Tìm kiếm");
-        jBSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBSearchActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -88,45 +130,111 @@ public class JPPuzzleSlangWord extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jPResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(249, 249, 249)
                         .addComponent(jLTitle)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLTitle)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jBSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
-                .addGap(41, 41, 41)
                 .addComponent(jPResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSearchActionPerformed
+    private void jBtnAnswerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAnswerActionPerformed
         // TODO add your handling code here:
-        String jTxtSearch = jTSearch.getText();
-        jLSlangWord.setText("Defenition : " + jTxtSearch);
-        jLResult.setText(DictionarySlangWord.get(jTxtSearch));
-    }//GEN-LAST:event_jBSearchActionPerformed
+        ArrayList<AbstractButton> listRadioButton = Collections.list(buttonGroupAnswer.getElements());
+        String defenitionAnswer = DictionarySlangWord.get(answerKey);
+        for (AbstractButton button : listRadioButton) {
+            
+            if(button.isSelected()){
+                String chooseAnswer = button.getText();
+                if (chooseAnswer.equals(defenitionAnswer))
+                {
+                    showMessageDialog(null, "Bạn đã trả lời đúng");
+                    loadData();
+                    return;
+                }
+                loadData();
+            }
 
+        }
+        
+        showMessageDialog(null, "Bạn đã trả lời sai, câu trả lời đúng là : " + defenitionAnswer);
+        loadData();
+        return;
+    }//GEN-LAST:event_jBtnAnswerActionPerformed
+
+    private void loadData(){
+        
+        answerKey = getRandomKey();
+        Random random = new Random();
+        int randomAnswer = random.nextInt(3) + 1;
+
+        ArrayList<AbstractButton> listRadioButton = Collections.list(buttonGroupAnswer.getElements());
+
+        jLQuestion.setText("Chọn nghĩa của từ: " + answerKey);
+        
+                
+        int i = 1;
+        for (AbstractButton button : listRadioButton) {
+            
+            if (i == randomAnswer){
+                button.setText(DictionarySlangWord.get(answerKey));
+            }else{
+                button.setText(DictionarySlangWord.get(getRandomKeyDifferentAnswerKey(answerKey)));
+            }
+
+            i++;
+        }
+        
+        refreshButtonRadio();
+    }
+    
+    private void refreshButtonRadio(){
+        ArrayList<AbstractButton> listRadioButton = Collections.list(buttonGroupAnswer.getElements());
+        
+        for (AbstractButton button : listRadioButton) {
+            
+            if(button.isSelected()){
+                button.setSelected(true);
+            }
+            
+            System.out.println(button.isSelected());
+
+        }
+        
+    }
+    
+    private String getRandomKeyDifferentAnswerKey(String ansKey){
+        Random       random    = new Random();
+        ArrayList<String> keys      = new ArrayList<String>(DictionarySlangWord.keySet());
+        keys.remove(ansKey);
+        String       randomKey = keys.get( random.nextInt(keys.size()) );
+        return randomKey;
+    }
+    
+    private String getRandomKey(){
+        Random       random    = new Random();
+        ArrayList<String> keys      = new ArrayList<String>(DictionarySlangWord.keySet());
+        String       randomKey = keys.get( random.nextInt(keys.size()) );
+        return randomKey;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBSearch;
-    private javax.swing.JLabel jLResult;
-    private javax.swing.JLabel jLSlangWord;
+    private javax.swing.ButtonGroup buttonGroupAnswer;
+    private javax.swing.JButton jBtnAnswer;
+    private javax.swing.JLabel jLQuestion;
     private javax.swing.JLabel jLTitle;
     private javax.swing.JPanel jPResult;
-    private javax.swing.JTextField jTSearch;
+    private javax.swing.JRadioButton jRadioButtonB;
+    private javax.swing.JRadioButton jRadioButtonC;
+    private javax.swing.JRadioButton jRadioButtonD;
+    private javax.swing.JRadioButton jRadioButttonA;
     // End of variables declaration//GEN-END:variables
 }
