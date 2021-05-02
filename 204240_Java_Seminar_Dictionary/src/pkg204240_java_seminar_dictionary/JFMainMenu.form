@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JMenuItem" name="jMenuItem1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+      </Properties>
+    </Component>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[1000, 650]"/>
+    </Property>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="JPMenu" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="JPContent" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="JPMenu" alignment="0" max="32767" attributes="0"/>
+          <Component id="JPContent" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="JPMenu">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="ff" red="cc" type="rgb"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="" noResource="true"/>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="jBSearchSlangWord" alignment="0" max="32767" attributes="0"/>
+              <Component id="jBSearchDefenition" alignment="0" pref="258" max="32767" attributes="0"/>
+              <Component id="jBShowHistory" alignment="0" pref="258" max="32767" attributes="0"/>
+              <Component id="jBAddSlangWord" alignment="0" pref="258" max="32767" attributes="0"/>
+              <Component id="jBEditSlangWord" alignment="0" pref="258" max="32767" attributes="0"/>
+              <Component id="jBDeleteSlangWord" alignment="0" pref="258" max="32767" attributes="0"/>
+              <Component id="jBResetSlangWord" alignment="0" pref="258" max="32767" attributes="0"/>
+              <Component id="jBRandomSlangWord" alignment="0" pref="258" max="32767" attributes="0"/>
+              <Component id="jBPuzzleSlangWord" alignment="0" pref="258" max="32767" attributes="0"/>
+              <Component id="jBPuzzleDefenition" alignment="0" pref="258" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jBSearchSlangWord" min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jBSearchDefenition" min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jBShowHistory" min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jBAddSlangWord" min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jBEditSlangWord" min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jBDeleteSlangWord" min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jBResetSlangWord" min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jBRandomSlangWord" min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jBPuzzleSlangWord" min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jBPuzzleDefenition" min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="jBSearchSlangWord">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m Slang Word"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBSearchSlangWordActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBSearchDefenition">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m theo Defenition"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBShowHistory">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Hi&#x1ec3;n th&#x1ecb; history"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBAddSlangWord">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Th&#xea;m Slang Word"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBEditSlangWord">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ch&#x1ec9;nh s&#x1eed;a Slang Word"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBDeleteSlangWord">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="X&#xf3;a Slang Word"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBResetSlangWord">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Reset Slang Word g&#x1ed1;c"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBRandomSlangWord">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Random Slang word"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBPuzzleSlangWord">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x110;&#x1ed1; vui Slang Word"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBPuzzleDefenition">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x110;&#x1ed1; vui Defenition"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="JPContent">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="621" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+  </SubComponents>
+</Form>
