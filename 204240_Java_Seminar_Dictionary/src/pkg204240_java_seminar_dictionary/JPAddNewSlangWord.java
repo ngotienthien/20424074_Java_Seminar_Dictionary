@@ -12,7 +12,7 @@ import javax.swing.JLabel;
  *
  * @author ngoti
  */
-public class JPSearchSlangWord extends javax.swing.JPanel {
+public class JPAddNewSlangWord extends javax.swing.JPanel {
 
     /**
      * Creates new form JPSearchSlangWord
@@ -20,7 +20,7 @@ public class JPSearchSlangWord extends javax.swing.JPanel {
     
     private TreeMap<String, String> DictionarySlangWord = new TreeMap<>();
     
-    public JPSearchSlangWord(TreeMap _DictionarySlangWord) {
+    public JPAddNewSlangWord(TreeMap _DictionarySlangWord) {
         DictionarySlangWord = _DictionarySlangWord;
         initComponents();
     }
@@ -35,7 +35,7 @@ public class JPSearchSlangWord extends javax.swing.JPanel {
     private void initComponents() {
 
         jLTitle = new javax.swing.JLabel();
-        jTSearchSlangWord = new javax.swing.JTextField();
+        jTSearch = new javax.swing.JTextField();
         jPResult = new javax.swing.JPanel();
         jLResult = new javax.swing.JLabel();
         jLSlangWord = new javax.swing.JLabel();
@@ -45,15 +45,15 @@ public class JPSearchSlangWord extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(700, 500));
 
         jLTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLTitle.setText("Tìm kiếm theo Slang Word");
+        jLTitle.setText("Thêm slang word mới");
 
-        jTSearchSlangWord.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTSearchSlangWord.setToolTipText("");
+        jTSearch.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTSearch.setToolTipText("");
 
         jLResult.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jLSlangWord.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLSlangWord.setText("Defenition : ");
+        jLSlangWord.setText("Slang word of  ");
 
         javax.swing.GroupLayout jPResultLayout = new javax.swing.GroupLayout(jPResult);
         jPResult.setLayout(jPResultLayout);
@@ -84,19 +84,20 @@ public class JPSearchSlangWord extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLTitle)
-                .addGap(249, 249, 249))
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTSearchSlangWord, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(249, 249, 249)
+                        .addComponent(jLTitle)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +106,7 @@ public class JPSearchSlangWord extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jBSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTSearchSlangWord, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
+                    .addComponent(jTSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
                 .addGap(41, 41, 41)
                 .addComponent(jPResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -114,8 +115,9 @@ public class JPSearchSlangWord extends javax.swing.JPanel {
 
     private void jBSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSearchActionPerformed
         // TODO add your handling code here:
-        String jTxtSearch = jTSearchSlangWord.getText();
-        jLResult.setText(jTxtSearch + " : " + DictionarySlangWord.get(jTxtSearch));
+        String jTxtSearch = jTSearch.getText();
+        jLSlangWord.setText("Defenition : " + jTxtSearch);
+        jLResult.setText(DictionarySlangWord.get(jTxtSearch));
     }//GEN-LAST:event_jBSearchActionPerformed
 
 
@@ -125,6 +127,6 @@ public class JPSearchSlangWord extends javax.swing.JPanel {
     private javax.swing.JLabel jLSlangWord;
     private javax.swing.JLabel jLTitle;
     private javax.swing.JPanel jPResult;
-    private javax.swing.JTextField jTSearchSlangWord;
+    private javax.swing.JTextField jTSearch;
     // End of variables declaration//GEN-END:variables
 }

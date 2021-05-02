@@ -93,7 +93,7 @@
                   <Component id="jBPuzzleSlangWord" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jBPuzzleDefenition" min="-2" pref="50" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -111,46 +111,73 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m theo Defenition"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBSearchDefenitionActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBShowHistory">
           <Properties>
             <Property name="text" type="java.lang.String" value="Hi&#x1ec3;n th&#x1ecb; history"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBShowHistoryActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBAddSlangWord">
           <Properties>
             <Property name="text" type="java.lang.String" value="Th&#xea;m Slang Word"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBAddSlangWordActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBEditSlangWord">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ch&#x1ec9;nh s&#x1eed;a Slang Word"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBEditSlangWordActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBDeleteSlangWord">
           <Properties>
             <Property name="text" type="java.lang.String" value="X&#xf3;a Slang Word"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBDeleteSlangWordActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBResetSlangWord">
           <Properties>
             <Property name="text" type="java.lang.String" value="Reset Slang Word g&#x1ed1;c"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBResetSlangWordActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBRandomSlangWord">
           <Properties>
             <Property name="text" type="java.lang.String" value="Random Slang word"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBRandomSlangWordActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBPuzzleSlangWord">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x110;&#x1ed1; vui Slang Word"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBPuzzleSlangWordActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBPuzzleDefenition">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x110;&#x1ed1; vui Defenition"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBPuzzleDefenitionActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -159,7 +186,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="621" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="724" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">

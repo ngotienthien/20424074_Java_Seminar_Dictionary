@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Box;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -79,22 +80,67 @@ public class JFMainMenu extends javax.swing.JFrame {
         });
 
         jBSearchDefenition.setText("Tìm kiếm theo Defenition");
+        jBSearchDefenition.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSearchDefenitionActionPerformed(evt);
+            }
+        });
 
         jBShowHistory.setText("Hiển thị history");
+        jBShowHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBShowHistoryActionPerformed(evt);
+            }
+        });
 
         jBAddSlangWord.setText("Thêm Slang Word");
+        jBAddSlangWord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAddSlangWordActionPerformed(evt);
+            }
+        });
 
         jBEditSlangWord.setText("Chỉnh sửa Slang Word");
+        jBEditSlangWord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEditSlangWordActionPerformed(evt);
+            }
+        });
 
         jBDeleteSlangWord.setText("Xóa Slang Word");
+        jBDeleteSlangWord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBDeleteSlangWordActionPerformed(evt);
+            }
+        });
 
         jBResetSlangWord.setText("Reset Slang Word gốc");
+        jBResetSlangWord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBResetSlangWordActionPerformed(evt);
+            }
+        });
 
         jBRandomSlangWord.setText("Random Slang word");
+        jBRandomSlangWord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRandomSlangWordActionPerformed(evt);
+            }
+        });
 
         jBPuzzleSlangWord.setText("Đố vui Slang Word");
+        jBPuzzleSlangWord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBPuzzleSlangWordActionPerformed(evt);
+            }
+        });
 
         jBPuzzleDefenition.setText("Đố vui Defenition");
+        jBPuzzleDefenition.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBPuzzleDefenitionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JPMenuLayout = new javax.swing.GroupLayout(JPMenu);
         JPMenu.setLayout(JPMenuLayout);
@@ -133,14 +179,14 @@ public class JFMainMenu extends javax.swing.JFrame {
                 .addComponent(jBPuzzleSlangWord, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBPuzzleDefenition, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout JPContentLayout = new javax.swing.GroupLayout(JPContent);
         JPContent.setLayout(JPContentLayout);
         JPContentLayout.setHorizontalGroup(
             JPContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 621, Short.MAX_VALUE)
+            .addGap(0, 724, Short.MAX_VALUE)
         );
         JPContentLayout.setVerticalGroup(
             JPContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,15 +213,85 @@ public class JFMainMenu extends javax.swing.JFrame {
 
     private void jBSearchSlangWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSearchSlangWordActionPerformed
         // TODO add your handling code here:
-        addPanelSearchSlangWord();
+        clearContenPanel();
+        JPSearchSlangWord JPSearch = new JPSearchSlangWord(DictionarySlangWord);
+        addPanelToContentPanel(JPSearch);
     }//GEN-LAST:event_jBSearchSlangWordActionPerformed
 
-    private void addPanelSearchSlangWord(){
-        JPSearchSlangWord JPSearch = new JPSearchSlangWord(DictionarySlangWord);
-        JPSearch.setBounds(0, 0, 750, 700);
-        JPContent.add(JPSearch);
+    private void jBSearchDefenitionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSearchDefenitionActionPerformed
+        // TODO add your handling code here:
+        clearContenPanel();
+
+        addPanelToContentPanel(new JPSearchDefenition(DictionarySlangWord));
+    }//GEN-LAST:event_jBSearchDefenitionActionPerformed
+
+    private void jBShowHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBShowHistoryActionPerformed
+        // TODO add your handling code here:
+        clearContenPanel();
+
+        addPanelToContentPanel(new JPShowHistory(DictionarySlangWord));
+    }//GEN-LAST:event_jBShowHistoryActionPerformed
+
+    private void jBAddSlangWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddSlangWordActionPerformed
+        // TODO add your handling code here:
+        clearContenPanel();
+
+        addPanelToContentPanel(new JPAddNewSlangWord(DictionarySlangWord));
+    }//GEN-LAST:event_jBAddSlangWordActionPerformed
+
+    private void jBEditSlangWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditSlangWordActionPerformed
+        // TODO add your handling code here:
+        clearContenPanel();
+
+        addPanelToContentPanel(new JPEditSlangWord(DictionarySlangWord));
+    }//GEN-LAST:event_jBEditSlangWordActionPerformed
+
+    private void jBDeleteSlangWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeleteSlangWordActionPerformed
+        // TODO add your handling code here:
+        clearContenPanel();
+
+        addPanelToContentPanel(new JPDeleteSlangWord(DictionarySlangWord));
+    }//GEN-LAST:event_jBDeleteSlangWordActionPerformed
+
+    private void jBResetSlangWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBResetSlangWordActionPerformed
+        // TODO add your handling code here:
+        clearContenPanel();
+
+        addPanelToContentPanel(new JPResetDictionary(DictionarySlangWord));
+    }//GEN-LAST:event_jBResetSlangWordActionPerformed
+
+    private void jBRandomSlangWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRandomSlangWordActionPerformed
+        // TODO add your handling code here:
+        clearContenPanel();
+
+        addPanelToContentPanel(new JPRandonSlangWord(DictionarySlangWord));
+    }//GEN-LAST:event_jBRandomSlangWordActionPerformed
+
+    private void jBPuzzleSlangWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPuzzleSlangWordActionPerformed
+        // TODO add your handling code here:
+        clearContenPanel();
+
+        addPanelToContentPanel(new JPPuzzleSlangWord(DictionarySlangWord));
+    }//GEN-LAST:event_jBPuzzleSlangWordActionPerformed
+
+    private void jBPuzzleDefenitionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPuzzleDefenitionActionPerformed
+        // TODO add your handling code here:
+        clearContenPanel();
+
+        addPanelToContentPanel(new JPPuzzleDefenition(DictionarySlangWord));
+    }//GEN-LAST:event_jBPuzzleDefenitionActionPerformed
+
+    
+    private void addPanelToContentPanel(JPanel panel){        
+        panel.setBounds(0, 0, 750, 700);
+        JPContent.add(panel);
         JPContent.revalidate();
         JPContent.repaint();
+    }
+    
+    
+    private void clearContenPanel(){
+        JPContent.removeAll();
     }
     
     private void LoadData() throws FileNotFoundException, IOException{
