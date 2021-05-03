@@ -160,7 +160,6 @@ public class JPPuzzleSlangWord extends javax.swing.JPanel {
                     loadData();
                     return;
                 }
-                loadData();
             }
 
         }
@@ -189,25 +188,16 @@ public class JPPuzzleSlangWord extends javax.swing.JPanel {
             }else{
                 button.setText(DictionarySlangWord.get(getRandomKeyDifferentAnswerKey(answerKey)));
             }
-
+            
+            button.setSelected(false);
+            
             i++;
         }
-        
-        refreshButtonRadio();
+
     }
     
     private void refreshButtonRadio(){
-        ArrayList<AbstractButton> listRadioButton = Collections.list(buttonGroupAnswer.getElements());
-        
-        for (AbstractButton button : listRadioButton) {
-            
-            if(button.isSelected()){
-                button.setSelected(true);
-            }
-            
-            System.out.println(button.isSelected());
-
-        }
+       
         
     }
     
