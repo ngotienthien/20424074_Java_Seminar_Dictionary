@@ -51,6 +51,8 @@ public class JFMainMenu extends javax.swing.JFrame {
         }
         initComponents();
 
+        clearContenPanel();        
+        addPanelToContentPanel(JPSearch);
 
     }
 
